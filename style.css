@@ -1,0 +1,68 @@
+.container {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.field-group {
+    margin-bottom: 15px;
+}
+
+.inline-fields {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inline-fields input {
+    width: 48%;
+}
+
+.date-sum-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.date-sum-group input {
+    width: 45%;
+}
+
+#signatureImage {
+    max-width: 150px;
+}
+
+iframe {
+    width: 100%;
+    height: 500px;
+    margin-top: 20px;
+}
+/* Устанавливаем общий стиль для всех input и textarea */
+input, textarea {
+    border: 1px solid #ccc; /* Цвет границы */
+    border-radius: 5px; /* Закругленные углы */
+    padding: 8px; /* Отступы внутри элемента для лучшего визуального восприятия */
+    font-size: 14px; /* Размер шрифта для ввода текста */
+    width: calc(100% - 20px); /* Ширина элемента, учитывающая отступы */
+    box-sizing: border-box; /* Учитываем отступы и границу в общей ширине элемента */
+    margin-bottom: 10px; /* Отступ снизу для визуального разделения элементов */
+}
+
+textarea {
+    resize: vertical; /* Разрешаем изменять размер только по вертикали */
+    min-height: 100px; /* Минимальная высота для textarea */
+}
+
+/* Опционально: стиль для кнопок */
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #007bff; /* Цвет фона кнопки */
+    color: white; /* Цвет текста на кнопке */
+    font-size: 14px;
+    cursor: pointer; /* Изменение курсора на указатель при наведении */
+    margin: 5px; /* Отступ вокруг кнопок */
+}
+
+button:hover {
+    background-color: #0056b3; /* Цвет фона кнопки при наведении */
+}

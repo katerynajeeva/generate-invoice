@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Receipt</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Generate Receipt</h1>
+        <div class="field-group">
+            <label for="fromField">From:</label><br>
+            <textarea id="fromField" rows="5" cols="50" placeholder="Enter your text here..."></textarea>
+        </div>
+        <div class="field-group">
+            <label for="toField">To:</label><br>
+            <textarea id="toField" rows="5" cols="50" placeholder="Enter your text here..."></textarea>
+        </div>
+        <div class="field-group">
+            <label for="cityField">City:</label>
+            <input id="cityField" type="text" value="Wien">
+        </div>
+        <div class="field-group">
+            <label for="dateField">Date:</label>
+            <input id="dateField" type="date">
+        </div>
+        <div class="field-group">
+            <label for="monthYearField">Month Year:</label>
+            <input id="monthYearField" type="text" placeholder="e.g., July 2024">
+        </div>
+        <div class="field-group">
+            <label>Date and Amount:</label><br>
+            <div id="dateSumContainer">
+                <div class="date-sum-group">
+                    <input type="date" class="dateInput" placeholder="Date">
+                    <input type="number" class="sumInput" placeholder="Amount" step="0.01">
+                </div>
+            </div>
+            <button onclick="addDateSum()">Add Another</button>
+        </div>
+        <div class="field-group">
+            <label for="bankName">Bank Name:</label>
+            <input id="bankName" type="text" placeholder="Bank Name">
+        </div>
+        <div class="field-group">
+            <label for="iban">IBAN:</label>
+            <input id="iban" type="text" placeholder="IBAN">
+        </div>
+        <div class="field-group">
+            <label for="bic">BIC:</label>
+            <input id="bic" type="text" placeholder="BIC">
+        </div>
+        <div class="field-group">
+            <label for="nameField">Name:</label>
+            <input id="nameField" type="text" placeholder="Your Name">
+        </div>
+        <div class="field-group">
+            <label for="degreeField">Academic Degree:</label>
+            <input id="degreeField" type="text" value="MA">
+        </div>
+        <div class="field-group">
+            <label for="imageInput">Upload Signature Image:</label>
+            <input id="imageInput" type="file" accept="image/*" onchange="handleImageUpload()">
+            <img id="signatureImage" alt="Signature Image" style="display:none;">
+        </div>
+
+        <!-- Buttons for generating and previewing the PDF -->
+        <!-- <button onclick="previewPDF()">Preview PDF</button> -->
+        <button onclick="savePDF()">Save as PDF</button>
+
+        <!-- Iframe for PDF preview -->
+        <iframe id="pdfPreview" src=""></iframe>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
