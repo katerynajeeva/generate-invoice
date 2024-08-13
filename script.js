@@ -285,7 +285,7 @@ function previewPDF() {
 
 function savePDF() {
     const doc = generatePDF();
-    doc.save('userText.pdf');
+    doc.save('honorarnote.pdf');
 }
 
 // Initialize fields and set up event listeners
