@@ -1,19 +1,31 @@
 function initializeFields() {
-    const fromField = document.getElementById('fromField');
-    const savedFrom = localStorage.getItem('fromField');
-    if (savedFrom) {
-        fromField.value = savedFrom;
+    const fromName = document.getElementById('fromName');
+    const savedFromName = localStorage.getItem('fromName');
+    if (savedFromName) {
+        fromName.value = savedFromName;
     }
 
-    const toField = document.getElementById('toField');
-    const savedTo = localStorage.getItem('toField');
-    if (savedTo) {
-        toField.value = savedTo;
+    const fromAddress = document.getElementById('fromAddress');
+    const savedFromAddress = localStorage.getItem('fromAddress');
+    if (savedFromAddress) {
+        fromAddress.value = savedFromAddress;
+    }
+
+    const toName = document.getElementById('toName');
+    const savedToName = localStorage.getItem('toName');
+    if (savedToName) {
+        toName.value = savedToName;
+    }
+
+    const toAddress = document.getElementById('toAddress');
+    const savedToAddress = localStorage.getItem('toAddress');
+    if (savedToAddress) {
+        toAddress.value = savedToAddress;
     }
 
     const dateField = document.getElementById('dateField');
     const today = new Date().toISOString().split('T')[0];
-    dateField.value = today; // Установка текущей даты в поле
+    dateField.value = today;
 
     const monthYearField = document.getElementById('monthYearField');
     const now = new Date();
@@ -49,10 +61,10 @@ function initializeFields() {
         nameField.value = savedName;
     }
 
-    const degreeField = document.getElementById('degreeField');
-    const savedDegree = localStorage.getItem('degreeField');
-    if (savedDegree) {
-        degreeField.value = savedDegree;
+    const fromAcademicDegree = document.getElementById('fromAcademicDegree');
+    const savedAcademicDegree = localStorage.getItem('fromAcademicDegree');
+    if (savedAcademicDegree) {
+        fromAcademicDegree.value = savedAcademicDegree;
     }
 
     const signatureImage = document.getElementById('signatureImage');
@@ -61,20 +73,6 @@ function initializeFields() {
         signatureImage.src = savedImage;
         signatureImage.style.display = 'block';
     }
-
-    // Установка текущей даты и суммы 100 в первой группе полей
-    const dateInputs = document.querySelectorAll('.dateInput');
-    const sumInputs = document.querySelectorAll('.sumInput');
-    dateInputs.forEach(input => {
-        if (!input.value) {
-            input.value = today;
-        }
-    });
-    sumInputs.forEach(input => {
-        if (!input.value) {
-            input.value = 100;
-        }
-    });
 
     // Trigger PDF preview on page load
     previewPDF();
@@ -135,52 +133,58 @@ function generatePDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    const fromField = document.getElementById('fromField');
-    const toField = document.getElementById('toField');
+    const fromName = document.getElementById('fromName');
+    const fromAddress = document.getElementById('fromAddress');
+    const toName = document.getElementById('toName');
+    const toAddress = document.getElementById('toAddress');
     const cityField = document.getElementById('cityField');
     const dateField = document.getElementById('dateField');
     const monthYearField = document.getElementById('monthYearField');
     const bankNameField = document.getElementById('bankName');
     const ibanField = document.getElementById('iban');
     const bicField = document.getElementById('bic');
-    const nameField = document.getElementById('nameField');
-    const degreeField = document.getElementById('degreeField');
+    const savedAcademicDegree = document.getElementById('fromAcademicDegree');
     const dateSumGroups = document.querySelectorAll('.date-sum-group');
     const totalSum = calculateTotalSum();
 
-    localStorage.setItem('fromField', fromField.value);
-    localStorage.setItem('toField', toField.value);
+    localStorage.setItem('fromName', fromName.value);
+    localStorage.setItem('fromAddress', fromAddress.value);
+    localStorage.setItem('toName', toName.value);
+    localStorage.setItem('toAddress', toAddress.value);
     localStorage.setItem('bankName', bankNameField.value);
     localStorage.setItem('iban', ibanField.value);
     localStorage.setItem('bic', bicField.value);
-    localStorage.setItem('nameField', nameField.value);
-    localStorage.setItem('degreeField', degreeField.value);
+    localStorage.setItem('fromAcademicDegree', fromAcademicDegree.value);
 
     const margin = 10;
     const lineHeight = 10;
     const pageWidth = doc.internal.pageSize.getWidth();
     const textWidth = pageWidth - 2 * margin;
 
-    function calculateTextHeight(text, maxWidth) {
-        const lines = doc.splitTextToSize(text, maxWidth);
-        return lines.length * lineHeight;
+    // Function to calculate text height based on content
+    function calculateTextHeight(text) {
+        const textLines = doc.splitTextToSize(text, pageWidth - 2 * margin);
+        return textLines.length * lineHeight;
     }
 
     let yPosition = margin;
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(12);
-    doc.text(`${fromField.value}`, margin, yPosition);
-    yPosition += calculateTextHeight(`From: ${fromField.value}`, textWidth);// + lineHeight;
+    doc.text(`${fromName.value}, ${fromAcademicDegree.value}`, margin, yPosition);
+    yPosition += lineHeight / 2;
+    doc.text(`${fromAddress.value}`, margin, yPosition);
+    yPosition += calculateTextHeight(fromAddress.value, textWidth);
 
-    doc.text(`An: ${toField.value}`, margin, yPosition);
-    yPosition += calculateTextHeight(`To: ${toField.value}`, textWidth);// + lineHeight;
+    doc.text(`An: ${toName.value}`, margin, yPosition);
+    yPosition += lineHeight / 2;
+    doc.text(`${toAddress.value}`, margin, yPosition);
+    yPosition += calculateTextHeight(toAddress.value, textWidth);
 
     const cityDateText = `${cityField.value}, ${dateField.value}`;
     const cityDateTextWidth = doc.getTextWidth(cityDateText);
     const xPos = pageWidth - margin - cityDateTextWidth;
     doc.text(cityDateText, xPos, yPosition);
-    // yPosition += lineHeight;
 
     const headerText = 'HONORARNOTE';
     const headerFontSize = 16;
@@ -188,12 +192,12 @@ function generatePDF() {
     doc.setFont('helvetica', 'bold');
     const headerWidth = doc.getTextWidth(headerText);
     const headerX = (pageWidth - headerWidth) / 2;
-    yPosition += lineHeight;// * 2;
+    yPosition += lineHeight;
     doc.text(headerText, headerX, yPosition);
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(12);
-    const mainContentText = `Für meine Tätigkeiten als Bratschist bei dem Wiener Kaiser Orchester stelle ich folgenden Betrag in Rechnung:`;
+    const mainContentText = `Für meine Tätigkeiten als Bratschist bei dem ${toName.value} stelle ich folgenden Betrag in Rechnung:`;
     yPosition += headerFontSize + lineHeight;
     const mainContentLines = doc.splitTextToSize(mainContentText, textWidth);
     mainContentLines.forEach(line => {
@@ -216,20 +220,15 @@ function generatePDF() {
             const detailLines = doc.splitTextToSize(detailText, textWidth);
             detailLines.forEach(line => {
                 doc.text(line, margin, yPosition);
-                yPosition += lineHeight /2;
+                yPosition += lineHeight / 2;
             });
         }
     });
 
-    // yPosition += lineHeight;
-
     const totalSumText = `Honorar gesamt: ${totalSum.toFixed(2)} Euro`;
-    const totalSumLines = doc.splitTextToSize(totalSumText, textWidth);
     doc.setFont('helvetica', 'bold');
-    totalSumLines.forEach(line => {
-        doc.text(line, margin, yPosition);
-        yPosition += lineHeight * 1.5;
-    });
+    doc.text(totalSumText, margin, yPosition);
+    yPosition += lineHeight * 1.5;
 
     doc.setFont('helvetica', 'normal');
     const bankInfoText = `Für Sozialversicherung sowie Versteuerung bin ich selbst verantwortlich.\n\nIch bitte um Überweisung des Rechnungsbetrages auf mein Bankkonto:\n${bankNameField.value}\nIBAN: ${ibanField.value}\nBIC: ${bicField.value}`;
@@ -240,7 +239,7 @@ function generatePDF() {
     });
 
     yPosition += lineHeight * 2;
-    const closingText = `Mit freundlichen Grüßen\n${nameField.value}, ${degreeField.value}`;
+    const closingText = `Mit freundlichen Grüßen\n${fromName.value}, ${fromAcademicDegree.value}`;
     const closingLines = doc.splitTextToSize(closingText, textWidth);
     closingLines.forEach(line => {
         doc.text(line, margin, yPosition);
@@ -248,34 +247,31 @@ function generatePDF() {
     });
 
     const signatureImage = document.getElementById('signatureImage');
-        if (signatureImage.src) {
-            const imgWidth = signatureImage.naturalWidth;
-            const imgHeight = signatureImage.naturalHeight;
-            
-            // Определите максимальные размеры для изображения
-            const maxWidth = 50; // максимальная ширина изображения
-            const maxHeight = 20; // максимальная высота изображения
+    if (signatureImage.src) {
+        const imgWidth = signatureImage.naturalWidth;
+        const imgHeight = signatureImage.naturalHeight;
+        
+        const maxWidth = 50;
+        const maxHeight = 20;
 
-            // Вычисляем пропорции, чтобы сохранить соотношение сторон
-            let newWidth = imgWidth;
-            let newHeight = imgHeight;
+        let newWidth = imgWidth;
+        let newHeight = imgHeight;
 
-            if (imgWidth > maxWidth || imgHeight > maxHeight) {
-                const widthRatio = maxWidth / imgWidth;
-                const heightRatio = maxHeight / imgHeight;
-                const scaleFactor = Math.min(widthRatio, heightRatio);
+        if (imgWidth > maxWidth || imgHeight > maxHeight) {
+            const widthRatio = maxWidth / imgWidth;
+            const heightRatio = maxHeight / imgHeight;
+            const scaleFactor = Math.min(widthRatio, heightRatio);
 
-                newWidth = imgWidth * scaleFactor;
-                newHeight = imgHeight * scaleFactor;
-            }
-
-            // Добавляем изображение на PDF, сохраняя пропорции
-            doc.addImage(signatureImage.src, 'JPEG', margin, yPosition, newWidth, newHeight);
-            yPosition += newHeight + lineHeight;
+            newWidth = imgWidth * scaleFactor;
+            newHeight = imgHeight * scaleFactor;
         }
 
-        return doc;
+        doc.addImage(signatureImage.src, 'JPEG', margin, yPosition, newWidth, newHeight);
+        yPosition += newHeight + lineHeight;
     }
+
+    return doc;
+}
 
 function previewPDF() {
     const doc = generatePDF();
@@ -292,11 +288,9 @@ function savePDF() {
 window.onload = () => {
     initializeFields();
 
-    // Add event listeners to trigger PDF preview on input change
     document.querySelectorAll('input, textarea').forEach(element => {
         element.addEventListener('input', previewPDF);
     });
 
-    // Add event listener to trigger PDF preview when image is uploaded
     document.getElementById('imageInput').addEventListener('change', previewPDF);
 };

@@ -4,19 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generate Receipt</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div class="container">
         <h1>Generate Receipt</h1>
-        <div class="field-group">
-            <label for="fromField">From:</label><br>
-            <textarea id="fromField" rows="5" cols="50" placeholder="Enter your text here..."></textarea>
+        <div>
+            <label for="fromName">From Name:</label>
+            <input type="text" id="fromName" placeholder="Your Name">
         </div>
-        <div class="field-group">
-            <label for="toField">To:</label><br>
-            <textarea id="toField" rows="5" cols="50" placeholder="Enter your text here..."></textarea>
+        <div>
+            <label for="fromAcademicDegree">Academic Degree:</label>
+            <input type="text" id="fromAcademicDegree" placeholder="MA">
         </div>
+        <div>
+            <label for="fromAddress">From Address:</label>
+            <textarea id="fromAddress" placeholder="Your Address"></textarea>
+        </div>
+
+        <div>
+            <label for="toName">To Organization:</label>
+            <input type="text" id="toName" placeholder="Organization Name">
+        </div>
+        <div>
+            <label for="toAddress">To Address:</label>
+            <textarea id="toAddress" placeholder="Organization Address"></textarea>
+        </div>
+
+
         <div class="field-group">
             <label for="cityField">City:</label>
             <input id="cityField" type="text" value="Wien">
@@ -26,21 +42,21 @@
             <input id="dateField" type="date">
         </div>
         <div class="field-group">
-            <label for="monthYearField">Month Year:</label>
+            <label for="monthYearField">Billing Period: Month and Year</label>
             <input id="monthYearField" type="text" placeholder="e.g., July 2024">
         </div>
         <div class="field-group">
-            <label>Date and Amount:</label><br>
+            <label>Date of concert(s) and Amount:</label><br>
             <div id="dateSumContainer">
                 <div class="date-sum-group">
                     <input type="date" class="dateInput" placeholder="Date">
                     <input type="number" class="sumInput" placeholder="Amount" step="0.01">
                 </div>
             </div>
-            <button onclick="addDateSum()">Add Another</button>
+            <button onclick="addDateSum()">Add Another concert date</button>
         </div>
         <div class="field-group">
-            <label for="bankName">Bank Name:</label>
+            <label for="bankName">Your Name as per Bank Account:</label>
             <input id="bankName" type="text" placeholder="Bank Name">
         </div>
         <div class="field-group">
@@ -50,14 +66,6 @@
         <div class="field-group">
             <label for="bic">BIC:</label>
             <input id="bic" type="text" placeholder="BIC">
-        </div>
-        <div class="field-group">
-            <label for="nameField">Name:</label>
-            <input id="nameField" type="text" placeholder="Your Name">
-        </div>
-        <div class="field-group">
-            <label for="degreeField">Academic Degree:</label>
-            <input id="degreeField" type="text" value="MA">
         </div>
         <div class="field-group">
             <label for="imageInput">Upload Signature Image:</label>
