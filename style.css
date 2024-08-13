@@ -2,6 +2,11 @@ body {
     font-style: 'Helvetica';
     font-size: 14px;
 }
+.textSeePreview {
+    font-style: italic;
+    display: none;
+    margin-bottom: 20px;
+}
 
 .container {
     width: 500px;
@@ -121,6 +126,10 @@ fieldset {
 
 /* Добавляем стили для мобильных устройств */
 @media (max-width: 768px) {
+
+    .textSeePreview {
+        display: block;
+    }
     .container {
         flex-direction: column;
     }
@@ -128,9 +137,6 @@ fieldset {
     .form-container, .preview-container {
         width: 100%;
         padding: 10px;
-    }
-
-    #pdfPreview {
-        height: 400px; /* фиксированная высота для превью на мобильных устройствах */
+        overflow-y: visible;
     }
 }
