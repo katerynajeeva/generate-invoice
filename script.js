@@ -37,6 +37,10 @@ function initializeFields() {
     const year = now.getFullYear();
     monthYearField.value = `${monthName} ${year}`;
 
+    const dateInput = document.getElementById('dateInput');
+    dateInput.value = new Date().toISOString().split('T')[0];
+
+
     const bankName = document.getElementById('bankName');
     const savedBankName = localStorage.getItem('bankName');
     if (savedBankName) {
@@ -89,7 +93,7 @@ function addDateSum() {
 
     newGroup.innerHTML = `
         <input type="date" class="dateInput" value="${today}" placeholder="Date">
-        <input type="number" class="sumInput" value="100" placeholder="Amount" step="0.01">
+        <input type="number" class="sumInput" value="200" placeholder="Amount" step="5">
     `;
     container.appendChild(newGroup);
 

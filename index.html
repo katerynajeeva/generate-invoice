@@ -14,7 +14,7 @@
             <fieldset>
                 <div>
                     <label for="fromName">Your Name:</label>
-                    <input type="text" id="fromName" placeholder="Your Name">
+                    <input type="text" id="fromName" placeholder="John Doe">
                 </div>
                 <div>
                     <label for="fromAcademicDegree">Your Academic Degree (optional):</label>
@@ -57,8 +57,8 @@
                     <label>Date of concert(s) and Amount:</label><br>
                     <div id="dateSumContainer">
                         <div class="date-sum-group">
-                            <input type="date" class="dateInput" placeholder="Date">
-                            <input type="number" class="sumInput" placeholder="Amount" step="0.01">
+                            <input type="date" id="dateInput" class="dateInput" placeholder="Date">
+                            <input type="number" class="sumInput" placeholder="Amount" value="200" step="5">
                         </div>
                     </div>
                     <button onclick="addDateSum()">Add Another concert date</button>
@@ -67,7 +67,7 @@
             <fieldset>
                 <div class="field-group">
                     <label for="bankName">Your Name as per Bank Account:</label>
-                    <input id="bankName" type="text" placeholder="Bank Name">
+                    <input id="bankName" type="text" placeholder="John Doe">
                 </div>
                 <div class="field-group">
                     <label for="iban">IBAN:</label>
