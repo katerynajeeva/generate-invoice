@@ -160,7 +160,7 @@ function generatePDF() {
     localStorage.setItem('bic', bicField.value);
     localStorage.setItem('fromAcademicDegree', fromAcademicDegree.value);
 
-    const margin = 10;
+    const margin = 25;
     const lineHeight = 10;
     const pageWidth = doc.internal.pageSize.getWidth();
     const textWidth = pageWidth - 2 * margin;
@@ -171,7 +171,7 @@ function generatePDF() {
         return textLines.length * lineHeight;
     }
 
-    let yPosition = margin * 2;
+    let yPosition = margin;
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(12);
@@ -235,12 +235,23 @@ function generatePDF() {
     yPosition += lineHeight * 1.5;
 
     doc.setFont('helvetica', 'normal');
-    const bankInfoText = `Für Sozialversicherung sowie Versteuerung bin ich selbst verantwortlich.\n\nIch bitte um Überweisung des Rechnungsbetrages auf mein Bankkonto:\n${bankNameField.value}\nIBAN: ${ibanField.value}\nBIC: ${bicField.value}`;
-    const bankInfoLines = doc.splitTextToSize(bankInfoText, textWidth);
-    bankInfoLines.forEach(line => {
-        doc.text(line, margin, yPosition);
-        yPosition += lineHeight / 2;
-    });
+    const bankInfoText1 = `Für Sozialversicherung sowie Versteuerung bin ich selbst verantwortlich.`;
+    doc.text(bankInfoText1, margin, yPosition);
+    yPosition += lineHeight;
+
+    doc.setFont('helvetica', 'bold');
+    const bankInfoText2 = `Ich bitte um Überweisung des Rechnungsbetrages auf mein Bankkonto:`;
+    doc.text(bankInfoText2, margin, yPosition);
+    yPosition += lineHeight / 2;
+
+    doc.setFont('helvetica', 'normal');
+    doc.text(fromName.value, margin, yPosition);
+    yPosition += lineHeight / 2;
+    doc.text(`Bank Name: ${bankNameField.value}`, margin, yPosition);
+    yPosition += lineHeight / 2;
+    doc.text(`IBAN: ${ibanField.value}`, margin, yPosition);
+    yPosition += lineHeight / 2;
+    doc.text(`BIC: ${bicField.value}`, margin, yPosition);
 
     yPosition += lineHeight * 2;
     const closingText = `Mit freundlichen Grüßen\n${fromName.value}, ${fromAcademicDegree.value}`;
