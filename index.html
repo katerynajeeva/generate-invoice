@@ -9,76 +9,92 @@
 </head>
 <body>
     <div class="container">
-        <h1>Generate Receipt</h1>
-        <div>
-            <label for="fromName">From Name:</label>
-            <input type="text" id="fromName" placeholder="Your Name">
-        </div>
-        <div>
-            <label for="fromAcademicDegree">Academic Degree:</label>
-            <input type="text" id="fromAcademicDegree" placeholder="MA">
-        </div>
-        <div>
-            <label for="fromAddress">From Address:</label>
-            <textarea id="fromAddress" placeholder="Your Address"></textarea>
-        </div>
-
-        <div>
-            <label for="toName">To Organization:</label>
-            <input type="text" id="toName" placeholder="Organization Name">
-        </div>
-        <div>
-            <label for="toAddress">To Address:</label>
-            <textarea id="toAddress" placeholder="Organization Address"></textarea>
-        </div>
-
-
-        <div class="field-group">
-            <label for="cityField">City:</label>
-            <input id="cityField" type="text" value="Wien">
-        </div>
-        <div class="field-group">
-            <label for="dateField">Date:</label>
-            <input id="dateField" type="date">
-        </div>
-        <div class="field-group">
-            <label for="monthYearField">Billing Period: Month and Year</label>
-            <input id="monthYearField" type="text" placeholder="e.g., July 2024">
-        </div>
-        <div class="field-group">
-            <label>Date of concert(s) and Amount:</label><br>
-            <div id="dateSumContainer">
-                <div class="date-sum-group">
-                    <input type="date" class="dateInput" placeholder="Date">
-                    <input type="number" class="sumInput" placeholder="Amount" step="0.01">
+        <div class="form-container">
+            <h2>Enter Your Details</h2>
+            <fieldset>
+                <div>
+                    <label for="fromName">Your Name:</label>
+                    <input type="text" id="fromName" placeholder="Your Name">
                 </div>
-            </div>
-            <button onclick="addDateSum()">Add Another concert date</button>
-        </div>
-        <div class="field-group">
-            <label for="bankName">Your Name as per Bank Account:</label>
-            <input id="bankName" type="text" placeholder="Bank Name">
-        </div>
-        <div class="field-group">
-            <label for="iban">IBAN:</label>
-            <input id="iban" type="text" placeholder="IBAN">
-        </div>
-        <div class="field-group">
-            <label for="bic">BIC:</label>
-            <input id="bic" type="text" placeholder="BIC">
-        </div>
-        <div class="field-group">
-            <label for="imageInput">Upload Signature Image:</label>
-            <input id="imageInput" type="file" accept="image/*" onchange="handleImageUpload()">
-            <img id="signatureImage" alt="Signature Image" style="display:none;">
+                <div>
+                    <label for="fromAcademicDegree">Your Academic Degree (optional):</label>
+                    <input type="text" id="fromAcademicDegree" placeholder="MA">
+                </div>
+                <div>
+                    <label for="fromAddress">Your Address:</label>
+                    <textarea id="fromAddress" placeholder="Your Address" rows="3"></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div>
+                    <label for="toName">Organization Name:</label>
+                    <input type="text" id="toName" placeholder="Organization Name">
+                </div>
+                <div>
+                    <label for="toAddress">Organization Address:</label>
+                    <textarea id="toAddress" placeholder="Organization Address" rows="3"></textarea>
+                </div>
+            </fieldset>
+
+
+            <fieldset>
+                <div class="field-group">
+                    <label for="cityField">City:</label>
+                    <input id="cityField" type="text" value="Wien">
+                </div>
+                <div class="field-group">
+                    <label for="dateField">Date:</label>
+                    <input id="dateField" type="date">
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="field-group">
+                    <label for="monthYearField">Billing Period: Month and Year</label>
+                    <input id="monthYearField" type="text" placeholder="e.g., July 2024">
+                </div>
+                <div class="field-group">
+                    <label>Date of concert(s) and Amount:</label><br>
+                    <div id="dateSumContainer">
+                        <div class="date-sum-group">
+                            <input type="date" class="dateInput" placeholder="Date">
+                            <input type="number" class="sumInput" placeholder="Amount" step="0.01">
+                        </div>
+                    </div>
+                    <button onclick="addDateSum()">Add Another concert date</button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="field-group">
+                    <label for="bankName">Your Name as per Bank Account:</label>
+                    <input id="bankName" type="text" placeholder="Bank Name">
+                </div>
+                <div class="field-group">
+                    <label for="iban">IBAN:</label>
+                    <input id="iban" type="text" placeholder="IBAN">
+                </div>
+                <div class="field-group">
+                    <label for="bic">BIC:</label>
+                    <input id="bic" type="text" placeholder="BIC">
+                </div>
+                <div class="field-group">
+                    <label for="imageInput">Upload Signature Image:</label>
+                    <input id="imageInput" type="file" accept="image/*" onchange="handleImageUpload()">
+                    <img id="signatureImage" alt="Signature Image" style="display:none;">
+                </div>
+            </fieldset>
+
+            <!-- Buttons for generating and previewing the PDF -->
+            <!-- <button onclick="previewPDF()">Preview PDF</button> -->
+            <button onclick="savePDF()">Save as PDF</button>
         </div>
 
-        <!-- Buttons for generating and previewing the PDF -->
-        <!-- <button onclick="previewPDF()">Preview PDF</button> -->
-        <button onclick="savePDF()">Save as PDF</button>
+        <!-- Правая колонка: превью PDF -->
+        <div class="preview-container">
+            <h2>PDF Preview</h2>
+            <iframe id="pdfPreview"></iframe>
+        </div>
 
-        <!-- Iframe for PDF preview -->
-        <iframe id="pdfPreview" src=""></iframe>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="script.js"></script>

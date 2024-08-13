@@ -167,7 +167,7 @@ function generatePDF() {
         return textLines.length * lineHeight;
     }
 
-    let yPosition = margin;
+    let yPosition = margin * 2;
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(12);
