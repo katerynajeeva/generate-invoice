@@ -294,11 +294,12 @@ function previewPDF() {
     document.getElementById('pdfPreview').src = pdfDataUri;
 }
 
-function savePDF(name) {
+function savePDF(fromName, toName) {
     const doc = generatePDF();
     const today = new Date().toISOString().split('T')[0];
-    const editedName = name.replace(/ /g, "-")
-    doc.save(`honorarnote-${editedName}-${today}.pdf`);
+    const editedFromName = fromName.replace(/ /g, "-")
+    const editedToName = toName.replace(/ /g, "-")
+    doc.save(`honorarnote-${editedFromName}-${editedToName}-${today}.pdf`);
 }
 
 // Initialize fields and set up event listeners
