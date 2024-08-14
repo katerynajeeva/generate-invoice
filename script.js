@@ -35,7 +35,8 @@ function initializeFields() {
     ];
     const monthName = monthsInGerman[now.getMonth()];
     const year = now.getFullYear();
-    monthYearField.value = `${monthName} ${year}`;
+    yearField.value = `${year}`;
+    monthField.value = `${monthName.toLowerCase()}`;
 
     const dateInput = document.getElementById('dateInput');
     dateInput.value = new Date().toISOString().split('T')[0];
@@ -143,7 +144,8 @@ function generatePDF() {
     const toAddress = document.getElementById('toAddress');
     const cityField = document.getElementById('cityField');
     const dateField = document.getElementById('dateField');
-    const monthYearField = document.getElementById('monthYearField');
+    const monthField = document.getElementById('monthField');
+    const yearField = document.getElementById('yearField');
     const bankNameField = document.getElementById('bankName');
     const ibanField = document.getElementById('iban');
     const bicField = document.getElementById('bic');
@@ -209,11 +211,9 @@ function generatePDF() {
         yPosition += lineHeight / 2;
     });
 
-
     doc.setFont('helvetica', 'bold');
-    doc.text(`${monthYearField.value}`, margin, yPosition);
+    doc.text(`${monthField.options[monthField.selectedIndex].text} ${yearField.value}`, margin, yPosition);
     doc.setFont('helvetica', 'normal');
-
     yPosition += lineHeight;
 
     dateSumGroups.forEach(group => {
@@ -308,6 +308,10 @@ window.onload = () => {
 
     document.querySelectorAll('input, textarea').forEach(element => {
         element.addEventListener('input', previewPDF);
+    });
+
+    document.querySelectorAll('select').forEach(element => {
+        element.addEventListener('change', previewPDF);
     });
 
     document.getElementById('imageInput').addEventListener('change', previewPDF);

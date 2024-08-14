@@ -20,10 +20,14 @@ body {
 .inline-fields {
     display: flex;
     justify-content: space-between;
+    align-items: center; 
+}
+.inline-fields label {
+    width: 140px;
 }
 
 .inline-fields input {
-    width: 48%;
+    flex: 1;
 }
 
 .date-sum-group {
@@ -51,10 +55,43 @@ input, textarea {
     border-radius: 5px; /* Закругленные углы */
     padding: 4px; /* Отступы внутри элемента для лучшего визуального восприятия */
     font-size: 14px; /* Размер шрифта для ввода текста */
-    width: calc(100% - 20px); /* Ширина элемента, учитывающая отступы */
+    width: 100%;
     box-sizing: border-box; /* Учитываем отступы и границу в общей ширине элемента */
-    margin-bottom: 16px; /* Отступ снизу для визуального разделения элементов */
     margin-top: 4px; /* Отступ снизу для визуального разделения элементов */
+}
+.custom-select {
+    width: 100%;
+    padding: 4px;
+    font-size: 14px;
+    line-height: 1.25;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none; /* Скрывает стандартный треугольник в некоторых браузерах */
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 viewBox%3D%220 0 4 5%22%3E%3Cpath fill%3D%22%23333%22 d%3D%22M2 0L0 2h4L2 0zM0 3h4l-2 2-2-2z%22/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 10px 10px;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Стили для focus состояния */
+.custom-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Стили для disabled состояния */
+.custom-select:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* Стили для браузера IE и Edge */
+.custom-select::-ms-expand {
+    display: none;
 }
 
 textarea {
@@ -138,5 +175,11 @@ fieldset {
         width: 100%;
         padding: 10px;
         overflow-y: visible;
+    }
+    .inline-fields {
+        display: block;   
+    }
+    .inline-fields label {
+        width: 100%;    
     }
 }

@@ -13,26 +13,26 @@
             <h2>Enter Your Details</h2>
             <a href="#pdfPreview" class="textSeePreview">Scroll down to see the PDF file Preview</a>
             <fieldset>
-                <div>
+                <div class="field-group inline-fields">
                     <label for="fromName">Your Name:</label>
                     <input type="text" id="fromName" placeholder="John Doe">
                 </div>
-                <div>
+                <div class="field-group inline-fields">
                     <label for="fromAcademicDegree">Your Academic Degree (optional):</label>
                     <input type="text" id="fromAcademicDegree" placeholder="MA">
                 </div>
-                <div>
+                <div class="field-group inline-fields">
                     <label for="fromAddress">Your Address:</label>
                     <textarea id="fromAddress" placeholder="Your Address" rows="3"></textarea>
                 </div>
             </fieldset>
 
             <fieldset>
-                <div>
+                <div class="field-group inline-fields">
                     <label for="toName">Organization Name:</label>
                     <input type="text" id="toName" placeholder="Organization Name">
                 </div>
-                <div>
+                <div class="field-group inline-fields">
                     <label for="toAddress">Organization Address:</label>
                     <textarea id="toAddress" placeholder="Organization Address" rows="3"></textarea>
                 </div>
@@ -40,19 +40,36 @@
 
 
             <fieldset>
-                <div class="field-group">
+                <div class="field-group inline-fields">
                     <label for="cityField">City:</label>
                     <input id="cityField" type="text" value="Wien">
                 </div>
-                <div class="field-group">
+                <div class="field-group inline-fields">
                     <label for="dateField">Date:</label>
                     <input id="dateField" type="date">
                 </div>
             </fieldset>
             <fieldset>
-                <div class="field-group">
-                    <label for="monthYearField">Billing Period: Month and Year</label>
-                    <input id="monthYearField" type="text" placeholder="e.g., July 2024">
+                <div class="field-group inline-fields">
+                    <label for="monthField">Billing Period: Month</label>
+                    <select class="custom-select" name="month" id="monthField">
+                        <option value="januar">Januar</option>
+                        <option value="februar">Februar</option>
+                        <option value="märz">März</option>
+                        <option value="april">April</option>
+                        <option value="mai">Mai</option>
+                        <option value="juni">Juni</option>
+                        <option value="juli">Juli</option>
+                        <option value="august">August</option>
+                        <option value="september">September</option>
+                        <option value="oktober">Oktober</option>
+                        <option value="november">November</option>
+                        <option value="dezember">Dezember</option>
+                    </select>
+                </div>
+                <div class="field-group inline-fields">
+                    <label for="yearField">Year</label>
+                    <input id="yearField" type="NUMBER" placeholder="2024" step="1">
                 </div>
                 <div class="field-group">
                     <label>Date of concert(s) and Amount:</label><br>
@@ -66,15 +83,15 @@
                 </div>
             </fieldset>
             <fieldset>
-                <div class="field-group">
+                <div class="field-group inline-fields">
                     <label for="bankName">Bank Name:</label>
                     <input id="bankName" type="text" placeholder="e.g., Erste Bank">
                 </div>
-                <div class="field-group">
+                <div class="field-group inline-fields">
                     <label for="iban">IBAN:</label>
                     <input id="iban" type="text" placeholder="IBAN">
                 </div>
-                <div class="field-group">
+                <div class="field-group inline-fields">
                     <label for="bic">BIC:</label>
                     <input id="bic" type="text" placeholder="BIC">
                 </div>
