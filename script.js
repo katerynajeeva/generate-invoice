@@ -299,7 +299,7 @@ function savePDF(fromName, toName) {
     const today = new Date().toISOString().split('T')[0];
     const editedFromName = fromName.replace(/ /g, "-")
     const editedToName = toName.replace(/ /g, "-")
-    doc.save(`honorarnote-${editedFromName}-${editedToName}-${today}.pdf`);
+    doc.save(`${today}-honorarnote-${editedFromName}-${editedToName}.pdf`);
 }
 
 // Initialize fields and set up event listeners
