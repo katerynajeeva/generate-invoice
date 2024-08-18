@@ -38,6 +38,12 @@ function initializeFields() {
     const mainContentField = document.getElementById('mainContentField');
     mainContentField.value = `Für meine Tätigkeiten als Bratschist bei dem ${toName.value} stelle ich folgenden Betrag für den Monat: ${monthName} ${year} in Rechnung:`;
     
+    const dateInput = document.getElementById('dateInput');
+    dateInput.value = today;
+
+    const sumInput = document.getElementById('sumInput');
+    sumInput.value = "200";
+
     const insuranceTextField = document.getElementById('insuranceTextField');
     insuranceTextField.value = `Für Sozialversicherung sowie Versteuerung bin ich selbst verantwortlich.`;
 
@@ -86,6 +92,13 @@ function initializeFields() {
     previewPDF();
 }
 
+function changeNameInMainContentText (newName) {
+    const previousName = localStorage.getItem('toName');
+    console.log(`previousName: ${previousName}, newName: ${newName}`); 
+    const mainContentField = document.getElementById('mainContentField');
+    const mainContentFieldText = mainContentField.value;
+    mainContentField.value = mainContentFieldText.replace(previousName, newName);
+}
 
 function addDateSum() {
     const container = document.getElementById('dateSumContainer');
@@ -95,9 +108,11 @@ function addDateSum() {
     // Получаем текущую дату в формате YYYY-MM-DD
     const today = new Date().toISOString().split('T')[0];
 
+    const sumInput = document.getElementById('sumInput');
+
     newGroup.innerHTML = `
         <input type="date" class="dateInput" value="${today}" placeholder="Date">
-        <input type="number" class="sumInput" value="200" placeholder="Amount" step="5">
+        <input type="number" class="sumInput" value="${sumInput.value}" placeholder="Fee" step="5">
     `;
     container.appendChild(newGroup);
 
@@ -302,6 +317,14 @@ function savePDF(fromName, toName) {
 // Initialize fields and set up event listeners
 window.onload = () => {
     initializeFields();
+
+
+    document.querySelectorAll('input#toName').forEach(element => {
+        element.addEventListener('input', (event) => {
+                const newName = event.target.value;
+                changeNameInMainContentText(newName);
+            });
+    });
 
     document.querySelectorAll('input, textarea').forEach(element => {
         element.addEventListener('input', previewPDF);

@@ -28,7 +28,7 @@
             </fieldset>
             <fieldset>
                 <div class="field-group inline-fields">
-                    <label for="toName">Organization Name:</label>
+                    <label for="toName">Organization Name (changing this field will affect the Main Text below):</label>
                     <input type="text" id="toName" placeholder="Organization Name">
                 </div>
                 <div class="field-group inline-fields">
@@ -47,16 +47,16 @@
                 </div>
             </fieldset>
              <fieldset>
-                <div class="field-group inline-fields">
-                    <label for="mainContentField">Your Text:</label>
+                <div class="field-group">
+                    <label for="mainContentField">Main text (check Month, Organization Name, and gender forms):</label>
                     <textarea id="mainContentField" placeholder="" rows="5"></textarea>
                 </div>
                 <div class="field-group">
-                    <label>Date of concert(s) and Amount:</label><br>
+                    <label>Add Date of Concert and Fee:</label><br>
                     <div id="dateSumContainer">
                         <div class="date-sum-group">
                             <input type="date" id="dateInput" class="dateInput" placeholder="Date">
-                            <input type="number" class="sumInput" placeholder="Amount" value="200" step="5">
+                            <input type="number" id="sumInput"  class="sumInput" placeholder="Amount" step="5">
                         </div>
                     </div>
                     <button onclick="addDateSum()">Add Another concert date</button>

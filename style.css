@@ -54,10 +54,15 @@ input, textarea {
     border: 1px solid #ccc; /* Цвет границы */
     border-radius: 5px; /* Закругленные углы */
     padding: 4px; /* Отступы внутри элемента для лучшего визуального восприятия */
-    font-size: 14px; /* Размер шрифта для ввода текста */
     width: 100%;
+    font-size: 14px; /* Размер шрифта для ввода текста */
     box-sizing: border-box; /* Учитываем отступы и границу в общей ширине элемента */
     margin-top: 4px; /* Отступ снизу для визуального разделения элементов */
+}
+.inline-fields input, .inline-fields textarea {
+    width: auto;
+    flex: 1;
+    margin-left: 6px;
 }
 .custom-select {
     width: 100%;
@@ -179,7 +184,8 @@ fieldset {
     .inline-fields {
         display: block;   
     }
-    .inline-fields label {
+    .inline-fields label, .inline-fields input, .inline-fields textarea  {
         width: 100%;    
     }
+
 }
