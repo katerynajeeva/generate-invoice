@@ -27,7 +27,6 @@ function initializeFields() {
     const today = new Date().toISOString().split('T')[0];
     dateField.value = today;
 
-    const monthYearField = document.getElementById('monthYearField');
     const now = new Date();
     const monthsInGerman = [
         'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
@@ -35,12 +34,9 @@ function initializeFields() {
     ];
     const monthName = monthsInGerman[now.getMonth()];
     const year = now.getFullYear();
-    yearField.value = `${year}`;
-    monthField.value = `${monthName.toLowerCase()}`;
 
-    const dateInput = document.getElementById('dateInput');
-    dateInput.value = new Date().toISOString().split('T')[0];
-
+    const mainContentField = document.getElementById('mainContentField');
+    mainContentField.value = `Für meine Tätigkeiten als Bratschist bei dem ${toName.value} stelle ich folgenden Betrag für den Monat: ${monthName} ${year} in Rechnung:`;
 
     const bankName = document.getElementById('bankName');
     const savedBankName = localStorage.getItem('bankName');
@@ -144,8 +140,6 @@ function generatePDF() {
     const toAddress = document.getElementById('toAddress');
     const cityField = document.getElementById('cityField');
     const dateField = document.getElementById('dateField');
-    const monthField = document.getElementById('monthField');
-    const yearField = document.getElementById('yearField');
     const bankNameField = document.getElementById('bankName');
     const ibanField = document.getElementById('iban');
     const bicField = document.getElementById('bic');
@@ -203,18 +197,14 @@ function generatePDF() {
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(12);
-    const mainContentText = `Für meine Tätigkeiten als Bratschist bei dem ${toName.value} stelle ich folgenden Betrag in Rechnung:`;
+    const mainContentText = mainContentField.value;
     yPosition += headerFontSize + lineHeight;
     const mainContentLines = doc.splitTextToSize(mainContentText, textWidth);
     mainContentLines.forEach(line => {
         doc.text(line, margin, yPosition);
         yPosition += lineHeight / 2;
     });
-
-    doc.setFont('helvetica', 'bold');
-    doc.text(`${monthField.options[monthField.selectedIndex].text} ${yearField.value}`, margin, yPosition);
-    doc.setFont('helvetica', 'normal');
-    yPosition += lineHeight;
+    yPosition += lineHeight / 2;
 
     dateSumGroups.forEach(group => {
         const date = group.querySelector('.dateInput').value;
