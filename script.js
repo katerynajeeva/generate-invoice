@@ -37,6 +37,13 @@ function initializeFields() {
 
     const mainContentField = document.getElementById('mainContentField');
     mainContentField.value = `Für meine Tätigkeiten als Bratschist bei dem ${toName.value} stelle ich folgenden Betrag für den Monat: ${monthName} ${year} in Rechnung:`;
+    
+    const insuranceTextField = document.getElementById('insuranceTextField');
+    insuranceTextField.value = `Für Sozialversicherung sowie Versteuerung bin ich selbst verantwortlich.`;
+
+    const bankTextField = document.getElementById('bankTextField');
+    bankTextField.value = `Ich bitte um Überweisung des Rechnungsbetrages auf mein Bankkonto:`;
+
 
     const bankName = document.getElementById('bankName');
     const savedBankName = localStorage.getItem('bankName');
@@ -225,13 +232,13 @@ function generatePDF() {
     yPosition += lineHeight * 1.5;
 
     doc.setFont('helvetica', 'normal');
-    const bankInfoText1 = `Für Sozialversicherung sowie Versteuerung bin ich selbst verantwortlich.`;
-    doc.text(bankInfoText1, margin, yPosition);
+    const insuranceText = insuranceTextField.value;
+    doc.text(insuranceText, margin, yPosition);
     yPosition += lineHeight;
 
     doc.setFont('helvetica', 'bold');
-    const bankInfoText2 = `Ich bitte um Überweisung des Rechnungsbetrages auf mein Bankkonto:`;
-    doc.text(bankInfoText2, margin, yPosition);
+    const bankInfoText = bankTextField.value;
+    doc.text(bankInfoText, margin, yPosition);
     yPosition += lineHeight / 2;
 
     doc.setFont('helvetica', 'normal');
