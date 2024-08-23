@@ -11,7 +11,7 @@ This is a simple web-based invoice generator created as a personal project to he
 
 ## Demo
 
-You can check out a live demo [here](#https://katerynajeeva.github.io/generate-invoice/).
+You can check out a live demo [here](https://katerynajeeva.github.io/generate-invoice/).
 
 ## Usage
 
