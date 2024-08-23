@@ -173,14 +173,28 @@ fieldset {
 }
 .spoiler-title {
     cursor: pointer;
-    font-weight: bold;
     margin: 0;
+}
+.spoiler-arrow {
+    display: inline-block;
+    font-size: 10px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black; /* Цвет стрелочки */
+    margin-left: 8px;
+    transition: transform 0.3s ease; /* Плавный переход при изменении */
+    vertical-align: middle;
+}
+.spoiler.open .spoiler-title .spoiler-arrow {
+    transform: rotate(90deg); /* Поворот стрелочки при раскрытии */
 }
 .spoiler-content {
     display: none;
     margin-top: 10px;
 }
-.spoiler-content.open {
+.spoiler.open .spoiler-content {
     display: block;
 }
 

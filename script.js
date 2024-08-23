@@ -316,9 +316,24 @@ function savePDF(fromName, toName) {
 
 
 function toggleSpoilerContent(event) {
-    var content = event.currentTarget.nextElementSibling;
-    content.classList.toggle('open');
+    var spoiler = event.currentTarget.closest('.spoiler');
+    spoiler.classList.toggle('open');
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Находим все заголовки спойлеров
+    const spoilerTitles = document.querySelectorAll('.spoiler-title');
+
+    spoilerTitles.forEach(title => {
+        // Создаем элемент стрелочки
+        const arrow = document.createElement('span');
+        arrow.className = 'spoiler-arrow';
+        
+        // Добавляем стрелочку в конец заголовка
+        title.appendChild(arrow);
+    });
+});
+
 
 // Initialize fields and set up event listeners
 window.onload = () => {

@@ -13,7 +13,7 @@
             <h1 id="pageTitle">Invoice Generator for Musicians 🎻</h1>
             <p>This is a simple web-based invoice generator created as a personal project to help musicians, particularly freelancers in Vienna and Austria, easily create professional invoices.</p>
             <div class="spoiler">
-                <p class="spoiler-title" onclick="toggleSpoilerContent(event)">Usage Instructions (Click to Expand)</p>
+                <p class="spoiler-title" onclick="toggleSpoilerContent(event)">Usage Instructions</p>
                 <div class="spoiler-content">
                     <ul>
                         <li><strong>Fill in the form</strong>, including your name, date of concert, fee, etc.</li>
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="spoiler">
-                <p class="spoiler-title" onclick="toggleSpoilerContent(event)">Data Privacy and Security Info (Click to Expand)</p>
+                <p class="spoiler-title" onclick="toggleSpoilerContent(event)">Data Privacy and Security</p>
                 <div class="spoiler-content">
                     <ul>
                         <li><strong>None of your data</strong> is sent to <strong>any server</strong>!</li>
@@ -35,82 +35,104 @@
                 </div>
             </div>
             <h2>Enter Your Details</h2>
-            <fieldset>
-                <div class="field-group inline-fields">
-                    <label for="fromName">Your Name:</label>
-                    <input type="text" id="fromName" placeholder="John Doe">
-                </div>
-                <div class="field-group inline-fields">
-                    <label for="fromAcademicDegree">Your Academic Degree (optional):</label>
-                    <input type="text" id="fromAcademicDegree" placeholder="MA">
-                </div>
-                <div class="field-group inline-fields">
-                    <label for="fromAddress">Your Address:</label>
-                    <textarea id="fromAddress" placeholder="Your Address" rows="3"></textarea>
-                </div>
-            </fieldset>
-            <fieldset>
-                <div class="field-group inline-fields">
-                    <label for="toName">Organization Name (changing this field will affect the Main Text below):</label>
-                    <input type="text" id="toName" placeholder="Organization Name">
-                </div>
-                <div class="field-group inline-fields">
-                    <label for="toAddress">Organization Address:</label>
-                    <textarea id="toAddress" placeholder="Organization Address" rows="3"></textarea>
-                </div>
-            </fieldset>
-            <fieldset>
-                <div class="field-group inline-fields">
-                    <label for="cityField">City:</label>
-                    <input id="cityField" type="text" value="Wien">
-                </div>
-                <div class="field-group inline-fields">
-                    <label for="dateField">Date:</label>
-                    <input id="dateField" type="date">
-                </div>
-            </fieldset>
-             <fieldset>
-                <div class="field-group">
-                    <label for="mainContentField">Main text (check Month, Organization Name, and gender forms):</label>
-                    <textarea id="mainContentField" placeholder="" rows="5"></textarea>
-                </div>
-                <div class="field-group">
-                    <label>Add Date of Concert and Fee:</label><br>
-                    <div id="dateSumContainer">
-                        <div class="date-sum-group">
-                            <input type="date" id="dateInput" class="dateInput" placeholder="Date">
-                            <input type="number" id="sumInput"  class="sumInput" placeholder="Amount" step="5">
-                        </div>
+            <fieldset class="spoiler">
+                <h3 class="spoiler-title" onclick="toggleSpoilerContent(event)">Your Info</h3>
+                <div class="spoiler-content">
+                    <div class="field-group inline-fields">
+                        <label for="fromName">Your Name:</label>
+                        <input type="text" id="fromName" placeholder="John Doe">
                     </div>
-                    <button onclick="addDateSum()">Add Another concert date</button>
+                    <div class="field-group inline-fields">
+                        <label for="fromAcademicDegree">Your Academic Degree (optional):</label>
+                        <input type="text" id="fromAcademicDegree" placeholder="MA">
+                    </div>
+                    <div class="field-group inline-fields">
+                        <label for="fromAddress">Your Address:</label>
+                        <textarea id="fromAddress" placeholder="Your Address" rows="3"></textarea>
+                    </div>
                 </div>
             </fieldset>
-            <fieldset>
-                <div class="field-group inline-fields">
-                    <label for="insuranceTextField">Additional Info (taxes / insurance info etc.):</label>
-                    <textarea id="insuranceTextField" placeholder="" rows="2"></textarea>
+            <fieldset class="spoiler">
+                <h3 class="spoiler-title" onclick="toggleSpoilerContent(event)">Organization Info</h3>
+                <div class="spoiler-content">
+                    <p>Note: Any changes made to the "Organization Name" field will automatically update the "Main Text" field in the "Concert Dates and Fees" section.</p>
+                    <div class="field-group inline-fields">
+                        <label for="toName">Organization Name:</label>
+                        <input type="text" id="toName" placeholder="Organization Name">
+                    </div>
+                    <div class="field-group inline-fields">
+                        <label for="toAddress">Organization Address:</label>
+                        <textarea id="toAddress" placeholder="Organization Address" rows="3"></textarea>
+                    </div>
                 </div>
-                <div class="field-group inline-fields">
-                    <label for="bankTextField">Text About Your Bank:</label>
-                    <textarea id="bankTextField" placeholder="" rows="2"></textarea>
+            </fieldset>
+            <fieldset class="spoiler">
+                <h3 class="spoiler-title" onclick="toggleSpoilerContent(event)">City and Date</h3>
+                <div class="spoiler-content">
+                    <div class="field-group inline-fields">
+                        <label for="cityField">City:</label>
+                        <input id="cityField" type="text" value="Wien">
+                    </div>
+                    <div class="field-group inline-fields">
+                        <label for="dateField">Date:</label>
+                        <input id="dateField" type="date">
+                    </div>
                 </div>
+            </fieldset>
+            <fieldset class="spoiler">
+                <h3 class="spoiler-title" onclick="toggleSpoilerContent(event)">Concert Dates and Fees</h3>
+                <div class="spoiler-content">
+                    <div class="field-group">
+                        <label for="mainContentField">Invoice Details*:</label>
+                        <textarea id="mainContentField" placeholder="" rows="5"></textarea>
+                        <p>*Please review the month, organization name, and ensure that the gender forms are correctly filled</p>
+                    </div>
+                    <div class="field-group">
+                        <label>Add Date of Concert and Fee:</label><br>
+                        <div id="dateSumContainer">
+                            <div class="date-sum-group">
+                                <input type="date" id="dateInput" class="dateInput" placeholder="Date">
+                            <input type="number" id="sumInput"  class="sumInput" placeholder="Amount" step="5">
+                            </div>
+                        </div>
+                        <button onclick="addDateSum()">Add Another Concert Date</button>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="spoiler">
+                <h3 class="spoiler-title" onclick="toggleSpoilerContent(event)">Bank Info</h3>
+                <div class="spoiler-content">
+                    <div class="field-group inline-fields">
+                        <label for="insuranceTextField">Additional Information (e.g., Taxes and Insurance):</label>
+                        <textarea id="insuranceTextField" placeholder="" rows="2"></textarea>
+                    </div>
+                    <div class="field-group inline-fields">
+                        <label for="bankTextField">Bank Account Information:</label>
+                        <textarea id="bankTextField" placeholder="" rows="2"></textarea>
+                    </div>
 
-                <div class="field-group inline-fields">
-                    <label for="bankName">Bank Name:</label>
-                    <input id="bankName" type="text" placeholder="e.g., Erste Bank">
+                    <div class="field-group inline-fields">
+                        <label for="bankName">Bank Name:</label>
+                        <input id="bankName" type="text" placeholder="e.g., Erste Bank">
+                    </div>
+                    <div class="field-group inline-fields">
+                        <label for="iban">IBAN:</label>
+                        <input id="iban" type="text" placeholder="IBAN">
+                    </div>
+                    <div class="field-group inline-fields">
+                        <label for="bic">BIC:</label>
+                        <input id="bic" type="text" placeholder="BIC">
+                    </div>
                 </div>
-                <div class="field-group inline-fields">
-                    <label for="iban">IBAN:</label>
-                    <input id="iban" type="text" placeholder="IBAN">
-                </div>
-                <div class="field-group inline-fields">
-                    <label for="bic">BIC:</label>
-                    <input id="bic" type="text" placeholder="BIC">
-                </div>
-                <div class="field-group">
-                    <label for="imageInput">Upload Signature Image:</label>
-                    <input id="imageInput" type="file" accept="image/*" onchange="handleImageUpload()">
-                    <img id="signatureImage" alt="Signature Image" style="display:none;">
+            </fieldset>
+            <fieldset class="spoiler">
+                <h3 class="spoiler-title" onclick="toggleSpoilerContent(event)">Signature</h3>
+                <div class="spoiler-content">
+                    <div class="field-group">
+                        <label for="imageInput">Upload Signature Image:</label>
+                        <input id="imageInput" type="file" accept="image/*" onchange="handleImageUpload()">
+                        <img id="signatureImage" alt="Signature Image" style="display:none;">
+                    </div>
                 </div>
             </fieldset>
 
