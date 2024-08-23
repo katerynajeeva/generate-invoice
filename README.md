@@ -6,16 +6,16 @@ This is a simple web-based invoice generator created as a personal project to he
 
 - **User-Friendly Interface**: A clean and intuitive form for entering invoice details.
 - **PDF Preview**: Real-time preview of the generated PDF on the same page.
-- **Customizable**: Fields for `From`, `To`, `Date`, `Amount`, and more.
+- **Customizable**: Fields for `From`, `To`, `Date of Concert`, `Fee`, and more.
 - **Responsive Design**: Adaptable to various screen sizes, including mobile devices.
 
 ## Demo
 
-You can check out a live demo [here](https://katerynajeeva.github.io/generate-invoice/).
+You can check out a live demo [here](https://katerynajeeva.github.io/invoice-generator/).
 
 ## Usage
 
-1. **Fill in the fields on the form**, including `From`, `To`, `Date`, `Amount`, etc.
+1. **Fill in the fields on the form**, including `From`, `To`, `Date of Concert`, `Fee`, etc.
 2. **Preview your invoice in real-time** to see how it will look.
 3. **Click the "Generate PDF" button** to download your invoice.
 
@@ -23,7 +23,7 @@ You can check out a live demo [here](https://katerynajeeva.github.io/generate-in
 
 To run this project locally:
 
-1. Clone the repository: `git clone https://github.com/your-username/invoice-generator.git`
+1. Clone the repository: `git clone https://github.com/katerynajeeva/invoice-generator.git`
 2. Navigate to the project directory: `cd invoice-generator`
 3. Open `index.html` in your preferred browser.
 
