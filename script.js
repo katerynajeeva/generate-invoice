@@ -112,7 +112,7 @@ function addDateSum() {
 
     newGroup.innerHTML = `
         <input type="date" class="dateInput" value="${today}" placeholder="Date">
-        <input type="number" class="sumInput" value="${sumInput.value}" placeholder="Fee" step="5">
+        <input type="number" class="sumInput" value="${sumInput.value}" placeholder="Fee" step="5" min="0">
     `;
     container.appendChild(newGroup);
 
