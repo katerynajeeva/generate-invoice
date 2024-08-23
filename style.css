@@ -1,4 +1,8 @@
-body {
+html {
+    scroll-behavior: smooth;
+}
+
+ody {
     font-style: 'Helvetica';
     font-size: 14px;
 }
