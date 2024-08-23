@@ -5,7 +5,6 @@ body {
 .textSeePreview {
     font-style: italic;
     display: none;
-    margin-bottom: 20px;
 }
 
 .container {
@@ -164,13 +163,32 @@ fieldset {
     border: 1px solid #ccc;
 }
 
-
+/* Стили для спойлера */
+.spoiler {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+.spoiler-title {
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0;
+}
+.spoiler-content {
+    display: none;
+    margin-top: 10px;
+}
+.spoiler-content.open {
+    display: block;
+}
 
 /* Добавляем стили для мобильных устройств */
 @media (max-width: 768px) {
 
     .textSeePreview {
-        display: block;
+        display: inline;
     }
     .container {
         flex-direction: column;

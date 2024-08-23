@@ -314,6 +314,12 @@ function savePDF(fromName, toName) {
     doc.save(`honorarnote-${today}-${editedFromName}-${editedToName}.pdf`);
 }
 
+
+function toggleSpoilerContent(event) {
+    var content = event.currentTarget.nextElementSibling;
+    content.classList.toggle('open');
+}
+
 // Initialize fields and set up event listeners
 window.onload = () => {
     initializeFields();
@@ -334,4 +340,5 @@ window.onload = () => {
     });
 
     document.getElementById('imageInput').addEventListener('change', handleImageUpload);
+
 };
