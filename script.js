@@ -318,7 +318,6 @@ function savePDF(fromName, toName) {
 window.onload = () => {
     initializeFields();
 
-
     document.querySelectorAll('input#toName').forEach(element => {
         element.addEventListener('input', (event) => {
                 const newName = event.target.value;

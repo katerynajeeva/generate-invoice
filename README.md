@@ -19,6 +19,12 @@ You can check out a live demo [here](https://katerynajeeva.github.io/invoice-gen
 2. **Preview your invoice in real-time** to see how it will look.
 3. **Click the "Generate PDF" button** to download your invoice.
 
+### Data Privacy and Security
+
+- **No Data Sent to Server**: All information you input into the invoice generator is stored locally in your browser's `localStorage`. This means that none of your data, including your name, address, account number, or any other personal information, is sent to any server.
+- **Persistent Storage**: The last entered data will be saved in your browser, so you don't need to re-enter everything each time you use the app.
+- **Clearing Data**: Please note that if you clear your browser's cache or `localStorage`, all saved data will be lost, and you will need to re-enter the information.
+
 ## Installation
 
 To run this project locally:
