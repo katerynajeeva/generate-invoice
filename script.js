@@ -334,5 +334,5 @@ window.onload = () => {
         element.addEventListener('change', previewPDF);
     });
 
-    document.getElementById('imageInput').addEventListener('change', previewPDF);
+    document.getElementById('imageInput').addEventListener('change', handleImageUpload);
 };
